@@ -1,6 +1,7 @@
 package dae.mosaicfilebrowser.state
 
 import java.io.File
+import kotlin.math.ceil
 import kotlin.math.max
 
 const val MAX_FILES = 10
@@ -10,7 +11,7 @@ sealed class ScreenState {
 
     data class DirectoryState(val file: File, val page: Int = 0) : ScreenState() {
         val totalPages: Int by lazy {
-            file.list().size / MAX_FILES
+            ceil(file.list().size.toFloat() / MAX_FILES.toFloat()).toInt()
         }
 
         val children: List<File> by lazy {

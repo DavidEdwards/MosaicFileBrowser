@@ -27,6 +27,9 @@ dependencies {
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+
+    // Console input handling
+    implementation 'org.jline:jline:3.17.1'
 }
 
 compileKotlin {

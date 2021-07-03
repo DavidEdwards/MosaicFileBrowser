@@ -10,6 +10,7 @@ import dae.mosaicfilebrowser.ui.FileScreen
 import dae.mosaicfilebrowser.ui.SplashScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.jline.terminal.TerminalBuilder
 import java.awt.Desktop
 import java.io.File
 
@@ -24,7 +25,8 @@ fun main(args: Array<String>) = runMosaic {
         }
     }
 
-    inputController { text ->
+    inputController { code ->
+        val s = code.toChar().toString()
         val screenState = stateViewModel.screenState
 
         if (screenState is SplashState) {
@@ -32,9 +34,9 @@ fun main(args: Array<String>) = runMosaic {
             return@inputController true
         }
 
-        when (text) {
-            "q", "quit" -> false
-            "p", "parent" -> {
+        when (s) {
+            "q" -> false
+            "p" -> {
                 if (screenState is DirectoryState) {
                     screenState.file.parentFile?.let { parent ->
                         stateViewModel.screenState = DirectoryState(parent)
@@ -48,7 +50,7 @@ fun main(args: Array<String>) = runMosaic {
             }
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" -> {
                 if (screenState is DirectoryState) {
-                    val index = text.toInt()
+                    val index = s.toInt()
                     if (screenState.children.isNotEmpty() && index in screenState.children.indices) {
                         val file = screenState.children[index]
                         if (file.isFile) {
@@ -61,19 +63,19 @@ fun main(args: Array<String>) = runMosaic {
 
                 true
             }
-            "n", "next" -> {
+            "n" -> {
                 if (screenState is DirectoryState) {
                     stateViewModel.screenState = screenState.nextPage()
                 }
                 true
             }
-            "b", "back" -> {
+            "b" -> {
                 if (screenState is DirectoryState) {
                     stateViewModel.screenState = screenState.previousPage()
                 }
                 true
             }
-            "o", "open" -> {
+            "o" -> {
                 if (screenState is FileState) {
                     withContext(Dispatchers.IO) {
                         Desktop.getDesktop().open(screenState.file)
@@ -86,16 +88,16 @@ fun main(args: Array<String>) = runMosaic {
     }
 }
 
-suspend fun inputController(block: suspend (text: String) -> Boolean) {
-    val reader = System.`in`.bufferedReader()
-
-    reader.use {
+suspend fun inputController(block: suspend (code: Int) -> Boolean) {
+    withContext(Dispatchers.IO) {
+        val terminal = TerminalBuilder.terminal()
+        terminal.enterRawMode()
+        val reader = terminal.reader()
         var reading = true
+
         while (reading) {
-            val text = withContext(Dispatchers.IO) {
-                it.readLine().trim()
-            }
-            reading = block.invoke(text)
+            val code = reader.read()
+            reading = block.invoke(code)
         }
     }
 }

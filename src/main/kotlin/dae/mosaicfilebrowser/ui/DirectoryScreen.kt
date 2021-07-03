@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import com.jakewharton.mosaic.Column
 import com.jakewharton.mosaic.Row
 import com.jakewharton.mosaic.Text
+import dae.mosaicfilebrowser.state.MAX_FILES
 import dae.mosaicfilebrowser.state.ScreenState
 
 @Composable
@@ -20,6 +21,9 @@ fun DirectoryScreen(state: ScreenState.DirectoryState) {
         } else {
             files.forEachIndexed { index, file ->
                 Text("($index) ${file.name}")
+            }
+            for (i in 0..(MAX_FILES - files.size)) {
+                Text("")
             }
         }
         DirectoryCommands(state = state)

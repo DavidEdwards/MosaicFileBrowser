@@ -8,6 +8,8 @@ What is Mosaic: https://github.com/JakeWharton/mosaic
 
 What is Jetpack Compose (not related to this project specifically): https://developer.android.com/jetpack/compose
 
+![filebrowser.webm.gif](filebrowser.webm.gif)
+
 # Running the code
 
 I have been running the code firstly through Intellij Idea, this provides a complete command to run in an external

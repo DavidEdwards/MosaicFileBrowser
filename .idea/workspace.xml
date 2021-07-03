@@ -10,10 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee98c891-bf9c-47df-b86c-df660a71657c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dae/mosaicfilebrowser/ui/DirectoryScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dae/mosaicfilebrowser/ui/DirectoryScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dae/mosaicfilebrowser/ui/FileScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dae/mosaicfilebrowser/ui/FileScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/dae/mosaicfilebrowser/ui/SplashScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/dae/mosaicfilebrowser/ui/SplashScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

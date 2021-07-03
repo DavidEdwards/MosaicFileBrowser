@@ -26,5 +26,9 @@ You can copy that from your IDE into an external terminal. There it should work 
 
 # Known bugs
 
-The system will currently shift position down a line when you press enter. I assume this is due to Mosaic attempting to
-re-write a line, but the line is no longer at the same position.
+~~The system will currently shift position down a line when you press enter. I assume this is due to Mosaic attempting
+to re-write a line, but the line is no longer at the same position.~~
+
+There is an issue where differing heights of output result in pushing the content around. Making the output from another
+command show up. This is mitigated by forcing the screens to be the same height. The splash screen is larger than the
+other screens. So the issue is visible when switching from the splash to the directory list.
